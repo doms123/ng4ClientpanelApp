@@ -1,0 +1,26 @@
+<div>
+	<a href="" routerLink="/" class="btnDefault">Back</a>
+</div>
+
+<div class="actionBox mt30 ml246">
+	<a href="" class="btnPrimary" [routerLink]="['/edit-client/'+id]">Edit</a>
+	<button class="btnDanger ml10" (click)="onDeleteClick()">Delete</button>
+</div>
+
+<div class="clientInfo mt30" *ngIf="client">
+	<div class="clientInfoHead clearFix">
+		<h3 class="fl">{{client.firstName}} {{client.lastName}}</h3>
+		<p class="fl">- Balance: <span [class.colorRed]="hasBalance" [class.colorGreen]="!hasBalance">{{client.balance | currency:"USD":true}}</span></p>
+		<button class="fl btnDefault" (click)="showBalanceUpdateInput = !showBalanceUpdateInput">Edit Balance</button>
+	</div>
+	<form *ngIf="showBalanceUpdateInput" (submit)="updateBalance(id)">
+		<input type="text" [(ngModel)]="client.balance" name="balance">
+		<input type="submit" value="Update" class="btnPrimary">
+	</form>
+	<hr class="mt10">
+	<div class="infoGroup mt10">
+		<p class="mt10"><span>Client ID:</span> {{client.$key}}</p>
+		<p class="mt10"><span>Email Address:</span> {{client.email}}</p>
+		<p class="mt10"><span>Phone Number:</span> {{client.phone}}</p>
+	</div>
+</div>

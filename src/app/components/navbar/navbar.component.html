@@ -1,0 +1,14 @@
+<header>
+<div class="wrap">
+	<h1><a href="" routerLink="/">Client Panel App</a></h1>
+	<nav>
+		<ul>
+			<li *ngIf="isLoggedIn" class="fl" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{ exact: true }"><a href="#" routerLink="/">Dashboard</a></li>
+			<li *ngIf="!isLoggedIn && showRegister" class="fr" [routerLinkActive]="['active']" ><a href="#" routerLink="/register">Register</a></li>
+			<li *ngIf="!isLoggedIn && showRegister" class="fr" [routerLinkActive]="['active']" ><a href="#" routerLink="/login">Login</a></li>
+			<li *ngIf="isLoggedIn" class="fr"><a href="#" (click)="onLogoutClick()">{{loggedInUser}} | Logout</a></li>
+			<li *ngIf="isLoggedIn" class="fr" [routerLinkActive]="['active']" ><a href="#" routerLink="/settings">Settings</a></li>
+		</ul>
+	</nav>
+</div>
+</header>
